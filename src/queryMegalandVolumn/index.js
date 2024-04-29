@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { ethers } = require("ethers");
 const MegalandMarketabi = require("./abis/MegalandMarket.json");
-const TookenNameabi = require("./abis/TokenName.json");
+const TokenNameabi = require("./abis/TokenName.json");
 const provider = new ethers.providers.JsonRpcProvider(
   "https://rpc.bitkubchain.io"
 );
@@ -56,7 +56,7 @@ async function queryIdToListing(listingId) {
   if (result.exchangeToken != null) {
     const tokenContract = new ethers.Contract(
       result.exchangeToken,
-      TookenNameabi,
+      TokenNameabi,
       provider
     );
     exchangeToken = await tokenContract["name"]();
