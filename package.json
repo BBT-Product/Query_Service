@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start:kusdt": "node src/queryKUSDT/index.js",
     "start:mega": "node src/queryMegaLandVolumn/index.js"
   },
   "author": "",
