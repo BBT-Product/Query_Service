@@ -1,0 +1,16 @@
+{
+  "name": "query_service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:mega": "node src/queryMegaLandVolumn.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "ethers": "5.4"
+  }
+}
