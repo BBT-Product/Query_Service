@@ -20,7 +20,7 @@ const downloadImage = async (url, imagePath) => {
 };
 
 async function main() {
-  const folderPath = "./src/queryImageS3/download/";
+  const folderPath = "./src/queryImageS3/download-logo/";
 
   if (!fs.existsSync(folderPath)) {
     fs.mkdirSync(folderPath);
@@ -30,7 +30,6 @@ async function main() {
     "https://developers.bitkubchain.com/api/v2/service/app-directory/page?page=1&limit=100"
   );
   console.log(projectData.data.data.length);
-  //   console.log(projectData.data.data);
   for (i in projectData.data.data) {
     const imageURL = projectData.data.data[i].image;
     const imageName = `image_${i}${path.extname(imageURL)}`;

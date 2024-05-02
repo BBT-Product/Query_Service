@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:kusdt": "node src/queryKUSDT/index.js",
     "start:mega": "node src/queryMegaLandVolumn/index.js",
-    "start:s3": "node src/queryImageS3/index.js"
+    "start:s3-logo": "node src/queryImageS3/queryLogo.js",
+    "start:s3-screenshot": "node src/queryImageS3/queryScreenShot.js"
   },
   "author": "",
   "license": "ISC",
