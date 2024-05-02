@@ -29,10 +29,11 @@ async function main() {
   let projectData = await axios.get(
     "https://developers.bitkubchain.com/api/v2/service/app-directory/page?page=1&limit=100"
   );
-
+  console.log(projectData.data.data.length);
+  //   console.log(projectData.data.data);
   for (i in projectData.data.data) {
     const imageURL = projectData.data.data[i].image;
-    const imageName = path.basename(imageURL);
+    const imageName = `image_${i}${path.extname(imageURL)}`;
     const imagePath = path.join(folderPath, imageName);
     try {
       await downloadImage(imageURL, imagePath);
