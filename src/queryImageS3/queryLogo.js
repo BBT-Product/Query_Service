@@ -36,10 +36,13 @@ async function main() {
     const imagePath = path.join(folderPath, imageName);
     try {
       await downloadImage(imageURL, imagePath);
-      console.log(`Image ${imageName} downloaded successfully!`);
+      // console.log(`Image ${imageName} downloaded successfully!`);
     } catch (error) {
-      console.error(`Error downloading image ${imageName}:`, error);
+      // console.error(`Error downloading image ${imageName}:`, error);
     }
+    console.log(
+      `${projectData.data.data[i].name} : ${projectData.data.data[i].image}`
+    );
   }
 }
 

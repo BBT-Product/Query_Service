@@ -2,5 +2,5 @@
 /.idea/
 /.DS_Store
 /build/
-/src/queryImageS3/download
+/src/queryImageS3/download-logo
 /src/queryImageS3/download-screenshot
