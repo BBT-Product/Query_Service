@@ -16,3 +16,7 @@
   - Tier3 holds < 5,000 && >= 1,000 KUSDT
 
 - For query Megaland trade volumn run `npm run start:mega {Number of past day that want to query}` in terminal
+
+- For query S3 image data
+  - query logo run `npm run start:s3-logo` in terminal
+  - query screenshot rin `npm run start:s3-screenshot` in terminal
