@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 const baseUrl =
-  "https://www.bkcscan.com/api/v2/tokens/0x89A587D40be5b1fE8C9d052C0bcda1A48c10fA20/holders";
+  "https://www.bkcscan.com/api/v2/tokens/0x8c5C748bCF0f06B5EFdEAf8aDAbe1507E25cFcE0/holders";
 
 // TPCX: https://www.bkcscan.com/api/v2/tokens/0x89A587D40be5b1fE8C9d052C0bcda1A48c10fA20/holders
 // DadyKim: https://www.bkcscan.com/api/v2/tokens/0x488023dff3f0B063E4c0C2d939d9a10b1AbA72e7/holders
@@ -43,27 +43,29 @@ async function main() {
     holderFirstPage.data.items[holderFirstPage.data.items.length - 1].value /
     10 ** 18;
 
-  let addressHash = holderFirstPage.data.next_page_params.address_hash;
-  let itemCount = holderFirstPage.data.next_page_params.items_count;
-  let value = holderFirstPage.data.next_page_params.value;
+  // let addressHash = holderFirstPage.data.next_page_params.address_hash;
+  // let itemCount = holderFirstPage.data.next_page_params.items_count;
+  // let value = holderFirstPage.data.next_page_params.value;
   // console.log(holderFirstPage.data.next_page_params);
 
-  if (lastHolderValue > 1000) {
-    let cleanHolder = await cleanHolderData(holderFirstPage.data.items);
-    holderList.push(...cleanHolder);
-  }
-  while (lastHolderValue > 1000) {
-    let nextPageHolder = await queryNextPage(addressHash, itemCount, value);
-    let cleanHolder = await cleanHolderData(nextPageHolder.items);
-    holderList.push(...cleanHolder);
+  let cleanHolder = await cleanHolderData(holderFirstPage.data.items);
+  holderList.push(...cleanHolder);
+  // if (lastHolderValue > 1000) {
+  //   let cleanHolder = await cleanHolderData(holderFirstPage.data.items);
+  //   holderList.push(...cleanHolder);
+  // }
+  // while (lastHolderValue > 1000) {
+  //   let nextPageHolder = await queryNextPage(addressHash, itemCount, value);
+  //   let cleanHolder = await cleanHolderData(nextPageHolder.items);
+  //   holderList.push(...cleanHolder);
 
-    lastHolderValue =
-      (await nextPageHolder.items[nextPageHolder.items.length - 1].value) /
-      10 ** 18;
-    addressHash = nextPageHolder.next_page_params.address_hash;
-    itemCount = nextPageHolder.next_page_params.items_count;
-    value = nextPageHolder.next_page_params.value;
-  }
+  //   lastHolderValue =
+  //     (await nextPageHolder.items[nextPageHolder.items.length - 1].value) /
+  //     10 ** 18;
+  //   addressHash = nextPageHolder.next_page_params.address_hash;
+  //   itemCount = nextPageHolder.next_page_params.items_count;
+  //   value = nextPageHolder.next_page_params.value;
+  // }
   // console.log(holderList[0].Value);
 
   for (i in holderList) {
@@ -170,7 +172,7 @@ async function main() {
   console.log(
     `\n Wallet hold > 500,000 BKC-D: ${
       holderTier[0].length
-    } address.\n BKC-D amount: ${holderValue[0]}.\n Average: ${
+    } address.\n BKC-D amount: ${holderValue[0]}\n Average: ${
       holderValue[0] / holderTier[0].length
     }`
   );
@@ -178,7 +180,7 @@ async function main() {
   console.log(
     `\n Wallet hold <= 500,000 && > 100,000 BKC-D: ${
       holderTier[1].length
-    } address. \n BKC-D amount: ${holderValue[1]}. \n Average: ${
+    } address. \n BKC-D amount: ${holderValue[1]}\n Average: ${
       holderValue[1] / holderTier[1].length
     } `
   );
@@ -186,7 +188,7 @@ async function main() {
   console.log(
     `\n Wallet hold <= 100,000 && > 50,000 BKC-D: ${
       holderTier[2].length
-    } address.\n BKC-D amount: ${holderValue[2]}.\n Average: ${
+    } address.\n BKC-D amount: ${holderValue[2]}\n Average: ${
       holderValue[2] / holderTier[2].length
     }`
   );
@@ -194,7 +196,7 @@ async function main() {
   console.log(
     `\n Wallet hold <= 50,000 && > 10,000 BKC-D: ${
       holderTier[3].length
-    } address.\n BKC-D amount: ${holderValue[3]}.\n Average: ${
+    } address.\n BKC-D amount: ${holderValue[3]}\n Average: ${
       holderValue[3] / holderTier[3].length
     }`
   );
@@ -202,7 +204,7 @@ async function main() {
   console.log(
     `\n Wallet hold <= 10,000 && > 5,000 BKC-D: ${
       holderTier[4].length
-    } address.\n BKC-D amount: ${holderValue[4]}.\n Average: ${
+    } address.\n BKC-D amount: ${holderValue[4]}\n Average: ${
       holderValue[4] / holderTier[4].length
     }`
   );
@@ -210,13 +212,13 @@ async function main() {
   console.log(
     `\n Wallet hold <= 5,000 && > 1,000 BKC-D: ${
       holderTier[5].length
-    } address.\n BKC-D amount: ${holderValue[5]}.\n Average: ${
+    } address.\n BKC-D amount: ${holderValue[5]}\n Average: ${
       holderValue[5] / holderTier[5].length
     }`
   );
 
   console.log(
-    `\n Wallet hold <= 1000: ${a} address.\n BKC-D amount: ${b}.\n Average: ${
+    `\n Wallet hold <= 1000: ${a} address.\n BKC-D amount: ${b}\n Average: ${
       b / a
     }`
   );
